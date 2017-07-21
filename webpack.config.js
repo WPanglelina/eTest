@@ -33,6 +33,22 @@ module.exports ={
                 loaders: ['babel-loader'],
                 exclude: /node_modules/,
                 include: __dirname
+            },
+            {
+                test: /\.(css|less)$/,
+                loader:'style!css!less'
+            },
+            {
+                test: /(fontawesome-webfont|glyphicons-halflings-regular)\.(woff|woff2|ttf|eot|svg)($|\?)/,
+                loader: 'url?limit=1024&name=fonts/[name].[hash].[ext]'
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                loader: "url?limit=100000&name=images/[hash:8].[name].[ext]"
+            },
+            {
+                test: /\.json$/,
+                loader: 'json'
             }
         ]
     },
@@ -41,7 +57,7 @@ module.exports ={
         new webpack.HotModuleReplacementPlugin(),
         // 启用热替换,仅开发模式需要
 
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin()
         // 允许错误不打断程序，,仅开发模式需要
 
     ]

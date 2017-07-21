@@ -9,9 +9,9 @@
  */
 import React from 'react'
 import { render } from 'react-dom'
-import Hello from "./container/Hello"
+import AppRouter from "../Router"
 
 render(
-    <Hello />,
+    <AppRouter />,
     document.getElementById('app')
 );
