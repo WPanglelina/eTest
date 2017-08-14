@@ -15,10 +15,10 @@ module.exports = {
   entry: {
     // 文件入口配置
     index: './src/index',
-    vendor: [
+   /* vendor: [
       'react',
       'react-dom'
-    ]
+    ]*/
     // 为了优化，切割代码，提取第三方库（实际上，我们将会引入很多第三方库）
   },
   // 页面入口文件配置
@@ -32,7 +32,7 @@ module.exports = {
     publicPath: '',
     // 模板、样式、脚本、图片等资源对应的server上的路径
 
-    filename: 'bundle.js'
+    filename: '[name].[hash].bundle.js'
     // 命名生成的JS
   },
 
@@ -58,7 +58,7 @@ module.exports = {
     // 改为production。最直观的就是没有所有的debug相关的东西，体积会减少很多
 
 
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' }),
+    // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js' }),
     // 'vendor' 就是把依赖库(比如react react-router, redux)全部打包到 vendor.js中
     // 'vendor.js' 就是把自己写的相关js打包到bundle.js中
     // 一般依赖库放到前面，所以vendor放第一个
@@ -77,7 +77,7 @@ module.exports = {
       inject:'body',
       // js插入的位置，true/'head'  false/'body'
 
-      chunks: ['vendor', 'index' ],
+      chunks: ['index' ],
       // 指定引入的chunk，根据entry的key配置，不配置就会引入所有页面的资源
 
       hash:true,
