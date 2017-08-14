@@ -10,6 +10,7 @@
 var webpack=require("webpack");
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var autoprefixer=require("autoprefixer");
 module.exports ={
     entry:{
         "index": "./src/index.js"
@@ -38,7 +39,7 @@ module.exports ={
             },
             {
                 test: /\.(css|less)$/,
-                loader:'style!css!postcss!less'
+                loader:'style-loader!css-loader!postcss-loader!less-loader'
             },
             {
                 test: /(fontawesome-webfont|glyphicons-halflings-regular)\.(woff|woff2|ttf|eot|svg)($|\?)/,
@@ -55,11 +56,12 @@ module.exports ={
         ]
     },
     plugins: [
-        new webpack.LoaderOptionsPlugin({
+        require('autoprefixer'),
+        /*new webpack.LoaderOptionsPlugin({
             options: {
-                postcss: ['autoprefixer']
+                postcss: [autoprefixer]
             }
-        }),
+        }),*/
         new webpack.HotModuleReplacementPlugin(),
         // 启用热替换,仅开发模式需要
 

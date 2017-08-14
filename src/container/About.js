@@ -8,6 +8,7 @@
  *
  */
 import React, {Component} from "react"
+import "../less/common.less"
 export default class About extends Component{
     render(){
         return(
