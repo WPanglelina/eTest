@@ -21,6 +21,7 @@ const mapDispatchToProps=(dispatch,ownProps)=>{
             debugger;
             dispatch(setVisibilityFilter(ownProps.filter));
         }
+        
     }
 };
 const FilterLink=connect(
