@@ -9,8 +9,8 @@
  */
 import React ,{Component} from "react"
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import Hello from "./src/container/Hello"
-import About from "./src/container/About"
+import Hello from "./src/containers/Hello"
+import About from "./src/containers/About"
 export default class AppRouter extends Component{
     render(){
         return(

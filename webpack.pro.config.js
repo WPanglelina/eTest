@@ -102,13 +102,29 @@ module.exports = {
   // 空字符串在此是为了resolve一些在import文件时不带文件扩展名的表达式
 
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel-loader'],
-        exclude: /node_modules/,
-        include: __dirname
-      }
-    ]
+      loaders: [
+          {
+              test: /\.js$/,
+              loaders: ['babel-loader'],
+              exclude: /node_modules/,
+              include: __dirname
+          },
+          {
+              test: /\.(css|less)$/,
+              loader:'style-loader!css-loader!postcss-loader!less-loader'
+          },
+          {
+              test: /(fontawesome-webfont|glyphicons-halflings-regular)\.(woff|woff2|ttf|eot|svg)($|\?)/,
+              loader: 'url?limit=1024&name=fonts/[name].[hash].[ext]'
+          },
+          {
+              test: /\.(jpg|png|gif)$/,
+              loader: "url?limit=100000&name=images/[hash:8].[name].[ext]"
+          },
+          {
+              test: /\.json$/,
+              loader: 'json'
+          }
+      ]
   }
 }
