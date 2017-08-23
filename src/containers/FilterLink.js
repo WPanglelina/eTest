@@ -18,10 +18,9 @@ const mapStateToProps=(state,ownProps)=>{
 const mapDispatchToProps=(dispatch,ownProps)=>{
     return{
         onClick: () => {
-            debugger;
             dispatch(setVisibilityFilter(ownProps.filter));
         }
-        
+
     }
 };
 const FilterLink=connect(
