@@ -14,19 +14,20 @@ import todoApp from "./reducers"
 import App from "./components/App"
 import {Provider} from "react-redux"
 import {createStore} from "redux"
+import {browserHistory} from "react-router"
 // let store=createStore(todoApp)
 const store = createStore(
     todoApp,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-/*
+
 render(
-    <AppRouter />,
+    <AppRouter store={store}/>,
     document.getElementById('app')
-);*/
-render(
+);
+/*render(
     <Provider store={store}>
         <App/>
     </Provider>,
     document.getElementById("app")
-)
+)*/

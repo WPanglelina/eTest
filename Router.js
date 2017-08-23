@@ -9,9 +9,11 @@
  */
 import React ,{Component} from "react"
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import {Provider} from "react-redux"
 import Hello from "./src/containers/Hello"
 import About from "./src/containers/About"
-export default class AppRouter extends Component{
+import App from "./src/components/App"
+/*export default class AppRouter extends Component{
     render(){
         return(
             <Router history={browserHistory}>
@@ -24,4 +26,20 @@ export default class AppRouter extends Component{
 
 
     }
-}
+}*/
+
+
+ const AppRouter=({store})=>{
+    return (
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/">
+                <IndexRoute component={Hello}/>
+                <Route path="about" component={About}/>
+                <Route path="app" component={App}/>
+            </Route>
+        </Router>
+    </Provider>
+    )
+};
+export default AppRouter;
